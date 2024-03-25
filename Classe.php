@@ -5,9 +5,9 @@ class Classe implements JsonSerializable
     protected $nar=[];
     public function __construct()
     {
-        $a1= new Alunno("a","a",5);
-        $a2= new Alunno("b","a",6);
-        $a3= new Alunno("c","d",7);
+        $a1= new Alunno("b","c",3);
+        $a2= new Alunno("b","d",3);
+        $a3= new Alunno("b","e",3);
         array_push($this->nar, $a1);
         array_push($this->nar, $a2);
         array_push($this->nar, $a3);
@@ -41,5 +41,20 @@ class Classe implements JsonSerializable
             $attrs[$name]=$this->{$name};
         }
         return $attrs;
+    }
+    public function addAlunno($nome,$cognome,$eta)
+    {
+        $a = new Alunno($nome,$cognome,$eta);
+        array_push($this->nar, $a);
+    }
+    public function deleteAlunno($nome)
+    {
+        foreach ($this->nar as $index => $alunno) {
+            if ($alunno->getNome() == $nome) {
+                unset($this->nar[$index]);
+                return true;
+            }
+        }
+        return false;
     }
 }

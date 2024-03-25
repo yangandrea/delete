@@ -1,11 +1,10 @@
 <?php
 class Alunno implements JsonSerializable {
-    protected $nome;
-    protected $cognome;
-    protected $eta;
-
-
-    public function __construct($nome, $cognome, $eta){
+    public $nome;
+    public $cognome;
+    public $eta;
+    public function __construct($nome,$cognome,$eta)
+    {
         $this->nome = $nome;
         $this->cognome = $cognome;
         $this->eta = $eta;
@@ -27,9 +26,10 @@ class Alunno implements JsonSerializable {
     }
     public function setEta($eta){
         $this->eta = $eta;
-    } public function toString(){
-    return "Nome: $this->nome" . "<br>" ."Cognome: $this->cognome" . "<br>" ."Età: $this->eta" . "<br><br>";
-}
+    }
+    public function toString(){
+        return "<p>Nome: ".$this->nome." Cognome: ".$this->cognome." Età: ".$this->eta."</p>";
+    }
     public function jsonSerialize() {
         $attrs = [];
         $class_vars = get_class_vars(get_class($this));
